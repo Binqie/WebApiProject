@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApiProject.Data;
-using WebApiProject.Models;
 using WebApiProject.Services;
 using WebApiProject.ViewModels;
 
@@ -19,7 +18,7 @@ public class UserChildrenController : ControllerBase
         _childrenService = childrenService;
     }
     
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<ActionResult> GetByUserId(int id)
     {
         var userChildren = await _childrenService.GetUserChildren(id);

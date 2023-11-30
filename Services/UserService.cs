@@ -25,7 +25,8 @@ public class UserService
                 UserId = user.Id,
                 Pin = children.Pin,
                 Fio = children.Fio
-            }).ToList()
+            }).ToList(),
+            Roles = user.Roles.Select(r => r.Name).ToList()
         }).ToListAsync();
         
         return users;
@@ -33,7 +34,7 @@ public class UserService
     
     public async Task<GetUserResponse> GetUser(int id)
     {
-        var user = await db.Users.Include(u => u.UserChildren).Select(user => new GetUserResponse()
+        var user = await db.Users.Include(u => u.Roles).Include(u => u.UserChildren).Include(u => u.UserParents).Select(user => new GetUserResponse()
         {
             Id = user.Id,
             Pin = user.Pin,
@@ -43,7 +44,8 @@ public class UserService
                 UserId = user.Id,
                 Pin = children.Pin,
                 Fio = children.Fio
-            }).ToList()
+            }).ToList(),
+            Roles = user.Roles.Select(r => r.Name).ToList()
         }).FirstOrDefaultAsync(user => user.Id == id);
 
         return user;
@@ -57,19 +59,27 @@ public class UserService
             return null;
         }
 
-        // Role defaultRole = await db.Role.FirstOrDefaultAsync(r => r.Name == "user");
-    
+        Role defaultRole = await db.Role.FirstOrDefaultAsync(r => r.Name == "user");
+
+        if (data.Fio == "admin")
+        {
+            defaultRole = await db.Role.FirstOrDefaultAsync(r => r.Name == "admin");
+        }
+
         user = new User()
         {
             Pin = data.Pin,
             Fio = data.Fio,
             Password = data.Password,
-            // Roles = { defaultRole }
+            Roles = new List<Role>()
+            {
+                defaultRole
+            }
         };
         
         await db.Users.AddAsync(user);
         await db.SaveChangesAsync();
-        
+        defaultRole.Users.Add(user);
         return new CreateUserResponse() { Id = user.Id, Pin = user.Pin, Fio = user.Fio };
     }
     

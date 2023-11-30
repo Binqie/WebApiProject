@@ -1,6 +1,5 @@
 ﻿using WebApiProject.Models;
 using WebApiProject.Services;
-using WebApiProject.Services;
 using WebApiProject.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

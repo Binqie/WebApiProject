@@ -14,7 +14,7 @@ public class User
     [Column(TypeName = "varchar(20)")]
     public string Password { get; set; }
     
-    public ICollection<Role> Roles { get; }
+    public ICollection<Role> Roles { get; set; }
     public ICollection<UserChildren> UserChildren { get; set; }
     public UserParents? UserParents { get; set; }
     public int? UserParentsId { get; set; }

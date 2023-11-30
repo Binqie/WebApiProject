@@ -1,4 +1,6 @@
-﻿namespace WebApiProject.ViewModels;
+﻿using WebApiProject.Models;
+
+namespace WebApiProject.ViewModels;
 
 public class GetUserResponse
 {
@@ -6,4 +8,5 @@ public class GetUserResponse
     public string Pin { get; set; }
     public string Fio { get; set; }
     public List<GetUserChildrenRequest> UserChildren { get; set; }
+    public List<String> Roles { get; set; }
 }
