@@ -11,7 +11,7 @@ public class User
     public string Pin { get; set; }
     [Column(TypeName = "varchar(50)")]
     public string Fio { get; set; }
-    [Column(TypeName = "varchar(20)")]
+    [Column(TypeName = "varchar")]
     public string Password { get; set; }
     
     public ICollection<Role> Roles { get; set; }

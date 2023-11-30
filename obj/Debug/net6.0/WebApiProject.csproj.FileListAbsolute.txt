@@ -86,3 +86,4 @@ D:\C#\WebApiProject\WebApiProject\obj\Debug\net6.0\refint\WebApiProject.dll
 D:\C#\WebApiProject\WebApiProject\obj\Debug\net6.0\WebApiProject.pdb
 D:\C#\WebApiProject\WebApiProject\obj\Debug\net6.0\WebApiProject.genruntimeconfig.cache
 D:\C#\WebApiProject\WebApiProject\obj\Debug\net6.0\ref\WebApiProject.dll
+D:\C#\WebApiProject\WebApiProject\bin\Debug\net6.0\BCrypt.Net-Next.dll

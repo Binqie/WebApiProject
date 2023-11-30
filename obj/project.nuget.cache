@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "I8MZ9AZFPngrg7wBmYMZDUp8qwJRH7lUFjJEGABJtl4zD6sNL0XErGPHbAjp45flNJpo/1/T4VqXe1ZAcGsNoA==",
+  "dgSpecHash": "XNl9niW/02yNxvXs+/Bta8nPtNZBV1T5hcQGyJTebgLq+9TIkgxiZr0k2iNJitoLL9F64G6TJce30TWmVEMmBg==",
   "success": true,
   "projectFilePath": "D:\\C#\\WebApiProject\\WebApiProject\\WebApiProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Binqie\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Binqie\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Binqie\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.25\\microsoft.aspnetcore.authentication.jwtbearer.6.0.25.nupkg.sha512",
     "C:\\Users\\Binqie\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

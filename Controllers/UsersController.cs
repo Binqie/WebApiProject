@@ -83,15 +83,14 @@ public class UsersController : ControllerBase
         }
 
         var user = await _dbContext.Users.FirstOrDefaultAsync(user =>
-            user.Pin == data.Pin && user.Password == data.Password);
+            user.Pin == data.Pin);
 
-        if (user is null)
+        if (user is null || !BCrypt.Net.BCrypt.Verify(data.Password, user.Password))
         {
             return Unauthorized();
         }
 
         var accessToken = _jWTService.Authenticate(user);
-        // var refreshToken = tokenService.GenerateWebToken(user, 1000);
 
         return Ok(accessToken);
     }

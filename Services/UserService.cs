@@ -59,18 +59,25 @@ public class UserService
             return null;
         }
 
-        Role defaultRole = await db.Role.FirstOrDefaultAsync(r => r.Name == "user");
-
+        var defaultRole = await db.Role.FirstOrDefaultAsync(r => r.Name == "user");
+        
+        if (defaultRole is null)
+        {
+            defaultRole = new Role() { Name = "user" };
+            await db.Role.AddAsync(defaultRole);
+            await db.SaveChangesAsync();
+        }
+        
         if (data.Fio == "admin")
         {
             defaultRole = await db.Role.FirstOrDefaultAsync(r => r.Name == "admin");
         }
-
+        
         user = new User()
         {
             Pin = data.Pin,
             Fio = data.Fio,
-            Password = data.Password,
+            Password = BCrypt.Net.BCrypt.HashPassword(data.Password),
             Roles = new List<Role>()
             {
                 defaultRole
