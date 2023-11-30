@@ -5,16 +5,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["JwtTest/JwtTest.csproj", "JwtTest/"]
-RUN dotnet restore "JwtTest/JwtTest.csproj"
+COPY ["WebApiProject/WebApiProject.csproj", "WebApiProject/"]
+RUN dotnet restore "WebApiProject/WebApiProject.csproj"
 COPY . .
-WORKDIR "/src/JwtTest"
-RUN dotnet build "JwtTest.csproj" -c Release -o /app/build
+WORKDIR "/src/WebApiProject"
+RUN dotnet build "WebApiProject.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "JwtTest.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "WebApiProject.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "JwtTest.dll"]
+ENTRYPOINT ["dotnet", "WebApiProject.dll"]
