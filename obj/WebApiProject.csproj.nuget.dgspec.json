@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\JwtTest\\WebApiProject\\WebApiProject.csproj": {}
+    "D:\\C#\\WebApiProject\\WebApiProject\\WebApiProject.csproj": {}
   },
   "projects": {
-    "D:\\C#\\JwtTest\\WebApiProject\\WebApiProject.csproj": {
+    "D:\\C#\\WebApiProject\\WebApiProject\\WebApiProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\JwtTest\\WebApiProject\\WebApiProject.csproj",
+        "projectUniqueName": "D:\\C#\\WebApiProject\\WebApiProject\\WebApiProject.csproj",
         "projectName": "WebApiProject",
-        "projectPath": "D:\\C#\\JwtTest\\WebApiProject\\WebApiProject.csproj",
+        "projectPath": "D:\\C#\\WebApiProject\\WebApiProject\\WebApiProject.csproj",
         "packagesPath": "C:\\Users\\Binqie\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\JwtTest\\WebApiProject\\obj\\",
+        "outputPath": "D:\\C#\\WebApiProject\\WebApiProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Binqie\\AppData\\Roaming\\NuGet\\NuGet.Config",

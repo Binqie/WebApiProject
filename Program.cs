@@ -63,6 +63,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<UserChildrenService>();
 builder.Services.AddScoped<IJWTService, JWTService>();
 
 builder.Services.AddControllers();

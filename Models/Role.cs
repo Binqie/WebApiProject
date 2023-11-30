@@ -1,10 +1,13 @@
-﻿namespace WebApiProject.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApiProject.Models;
 
 
 public class Role
 {
+    [Key]
     public int Id { get; set; }
-    public RoleType Name { get; set; }
+    public string Name { get; set; }
     
-    public List<User> Users { get; set; }
+    public ICollection<User> Users { get; }
 }

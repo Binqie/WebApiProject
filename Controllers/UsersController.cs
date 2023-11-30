@@ -9,7 +9,7 @@ using WebApiProject.Data;
 
 [Authorize]
 [Route("api/[controller]/[action]")]
-[ApiController]  
+[ApiController]
 public class UsersController : ControllerBase
 {
     private readonly IJWTService _jWTService;
@@ -22,15 +22,15 @@ public class UsersController : ControllerBase
         _userService = userService;
         _dbContext = dbContext;
     }
-    
+
     [HttpGet]
-    public async Task<List<User>> GetAll()
+    public async Task<List<GetUsersDTO>> GetAll()
     {
-        return await _userService.GetUsers();
+        return await _userService.GetAll();
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult> Get(int id)
+    public async Task<ActionResult<GetUserResponse>> Get(int id)
     {
         var user = await _userService.GetUser(id);
 
@@ -41,28 +41,18 @@ public class UsersController : ControllerBase
 
         return Ok(user);
     }
-    
+
     [AllowAnonymous]
     [HttpPost]
-    public async Task<IActionResult> Create(User user)
+    public async Task<ActionResult<CreateUserResponse>> Create(CreateUserRequest user)
     {
-        if (user is null)
-        {
-            return BadRequest();
-        }
-    
         var newUser = await _userService.AddUser(user);
         return Ok(newUser);
     }
-    
+
     [HttpPut]
     public async Task<IActionResult> Update(User user)
     {
-        if (user is null)
-        {
-            return BadRequest();
-        }
-
         var updatedUser = await _userService.UpdateUser(user);
         if (updatedUser is null)
         {
@@ -71,7 +61,7 @@ public class UsersController : ControllerBase
 
         return Ok(updatedUser);
     }
-    
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
@@ -93,8 +83,9 @@ public class UsersController : ControllerBase
             return BadRequest();
         }
 
-        var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Pin == data.Pin && user.Password == data.Password);
-        
+        var user = await _dbContext.Users.FirstOrDefaultAsync(user =>
+            user.Pin == data.Pin && user.Password == data.Password);
+
         if (user is null)
         {
             return Unauthorized();
@@ -102,7 +93,7 @@ public class UsersController : ControllerBase
 
         var accessToken = _jWTService.Authenticate(user);
         // var refreshToken = tokenService.GenerateWebToken(user, 1000);
-        
+
         return Ok(accessToken);
     }
 }
